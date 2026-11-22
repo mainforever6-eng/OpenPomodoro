@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Помидор</title>
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body data-phase="work">
+
+    <!-- Splash -->
+    <div id="appimg">
+      <p>🍅<p/>
+    </div>
+
+    <!-- Слева сверху: длительность отдыха -->
+    <div class="picker picker--left main">
+      <label class="picker__title" for="break-select" id="relaxtime">Отдых</label>
+      <select class="picker__select" id="break-select" data-role="break-options">
+        <option value="5">5 мин</option>
+        <option value="10">10 мин</option>
+        <option value="15">15 мин</option>
+      </select>
+    </div>
+
+    <!-- Справа сверху: длительность работы -->
+    <div class="picker picker--right main">
+      <label class="picker__title" for="work-select" id="worktime">Работа</label>
+      <select class="picker__select" id="work-select" data-role="work-options">
+        <option value="15">15 мин</option>
+        <option value="30">30 мин</option>
+        <option value="60">60 мин</option>
+      </select>
+    </div>
+
+    <main class="stage main">
+      <p class="phase" id="phase">Работа</p>
+      <p id="timer">30:00</p>
+      <p class="count" id="count"></p>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

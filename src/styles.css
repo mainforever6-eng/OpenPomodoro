@@ -1,0 +1,193 @@
+:root {
+  --accent-work: #e5484d;
+  --accent-break: #2f9e44;
+  --muted: #6b7280;
+  --chip-bg: rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------- Splash ---------- */
+
+#appimg {
+ width:100%;
+ height:100%;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 2s ease;
+  font-size: 10vh;
+}
+
+#appimg img {
+  max-width: 60vw;
+  max-height: 60vh;
+  display: block;
+}
+
+#appimg.opacity2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Появление контента ---------- */
+
+.main {
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.main.opacity1 {
+  opacity: 1;
+}
+
+/* ---------- База ---------- */
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #fff;
+  color: #111;
+  -webkit-tap-highlight-color: transparent;
+  /* Android WebView по долгому нажатию выделяет текст: выделение
+     «замораживает» отрисованные цифры и таймер выглядит остановленным. */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+}
+
+/* ---------- Переключатели в углах ---------- */
+
+.picker {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  user-select: none;
+}
+
+.picker--left {
+  left: clamp(10px, 12px, 20px);
+  align-items: flex-start;
+}
+
+.picker--right {
+  right: clamp(10px, 12px, 14px);
+  align-items: flex-end;
+}
+
+.picker__title {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.picker__select {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  background: var(--chip-bg);
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+  padding: 8px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.picker--left .picker__select {
+  color: var(--accent-break);
+  font-weight: 600;
+}
+
+.picker--right .picker__select {
+  color: var(--accent-work);
+  font-weight: 600;
+}
+
+/* ---------- Таймер ---------- */
+
+.stage {
+  text-align: center;
+  padding: 80px 16px 24px;
+}
+
+.phase {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+body[data-phase="work"] .phase {
+  color: var(--accent-work);
+}
+
+body[data-phase="break"] .phase {
+  color: var(--accent-break);
+}
+
+#timer {
+  margin: 0;
+  font-size: clamp(4rem, 22vw, 8rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+/* Пока палец зажат на цифрах — они немного уменьшаются */
+#timer:active {
+  transform: scale(0.9);
+}
+
+.count {
+  margin: 12px 0 0;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* ---------- Тёмная тема ---------- */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --muted: #9ca3af;
+    --chip-bg: rgba(255, 255, 255, 0.1);
+  }
+
+  body {
+    background: #111;
+    color: #f5f5f5;
+  }
+
+  #appimg {
+    background: #111;
+  }
+}
+#worktime{
+margin-right: clamp(6px, 8px, 10px);
+}
+#relaxtime{
+margin-left: clamp(6px, 8px, 10px);
+}
